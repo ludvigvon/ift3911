@@ -1,4 +1,4 @@
-package transport;
+package transport.arret;
 
 public class GareFactorySingleton {
 	private static GareFactorySingleton instance = null;

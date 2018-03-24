@@ -1,4 +1,4 @@
-package transport;
+package transport.arret;
 
 public abstract class Arret {
 	public Lieu Ville;

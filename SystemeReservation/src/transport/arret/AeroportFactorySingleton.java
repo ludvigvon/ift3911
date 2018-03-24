@@ -1,4 +1,4 @@
-package transport;
+package transport.arret;
 
 public class AeroportFactorySingleton {
 	private static AeroportFactorySingleton instance = null;
