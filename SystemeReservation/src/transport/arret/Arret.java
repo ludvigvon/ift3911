@@ -1,10 +1,10 @@
 package transport.arret;
 
 public abstract class Arret {
-	public Lieu Ville;
+	public Lieu ville;
 
 	public Arret(Lieu ville) {
-		Ville = ville;
+		this.ville = ville;
 	}	
 }
 

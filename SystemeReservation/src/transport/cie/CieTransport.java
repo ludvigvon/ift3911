@@ -1,12 +1,12 @@
 package transport.cie;
 
 public abstract class CieTransport {
-	protected String Id;
-	public String Name;
+	protected String id;
+	public String name;
 
 	public CieTransport(String name) {
-		Id = generateUniqueId();
-		Name = name;
+		this.id = generateUniqueId();
+		this.id = name;
 	}
 
 	abstract protected String generateUniqueId();
