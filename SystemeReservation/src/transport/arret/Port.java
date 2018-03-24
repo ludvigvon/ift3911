@@ -6,4 +6,10 @@ public class Port extends Arret {
 		super(ville);
 	}
 
+	@Override
+	protected String generateUniqueId() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 }
