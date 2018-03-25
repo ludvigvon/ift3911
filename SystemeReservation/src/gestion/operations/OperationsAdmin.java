@@ -1,8 +1,10 @@
-package gestion;
+package gestion.operations;
 
 import java.util.Date;
 import java.util.List;
 
+import gestion.Command;
+import gestion.ModelCommandWithResult;
 import repository.Model;
 import repository.Observer;
 import transport.Arret;
@@ -33,7 +35,8 @@ public class OperationsAdmin implements Observer {
 	}
 	
 	public void deleteArret(String id) {
-		model.deleteArret(id);
+		cmd = new DeleteArretCommand(model, id);
+		cmd.execute();
 	}
 	
 	public CieTransport createCie(String name) {

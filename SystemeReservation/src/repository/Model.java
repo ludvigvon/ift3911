@@ -26,6 +26,10 @@ public abstract class Model implements Subject {
 	protected CieFactory cieFactory;
 	protected ItineraireFactory itineraireFactory;
 
+	public Optional<Arret> getArret(String id){
+		return arrets.stream().filter(a -> a.getId().equals(id)).findFirst();
+	}
+	
 	public Arret createArret(Lieu ville) {
 		Arret arret = arretFactory.CreateArret(ville);
 		arrets.add(arret);
@@ -36,17 +40,13 @@ public abstract class Model implements Subject {
 	}
 
 	public void modifyArret(String id, Lieu ville) {
-		Optional<Arret> arret = arrets.stream().filter(a -> a.getId().equals(id)).findFirst();
-			
-		arret.ifPresent(a -> a.ville = ville);
+		getArret(id).ifPresent(a -> a.ville = ville);
 		
 		notifyObservers();
 	};
 
 	public void deleteArret(String id) {
-		Optional<Arret> arret = arrets.stream().filter(a -> a.getId().equals(id)).findFirst();
-		
-		arret.ifPresent(a -> arrets.remove(a));
+		getArret(id).ifPresent(a -> arrets.remove(a));
 		
 		notifyObservers();
 	};

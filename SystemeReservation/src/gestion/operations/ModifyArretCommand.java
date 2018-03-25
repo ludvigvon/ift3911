@@ -1,5 +1,6 @@
-package gestion;
+package gestion.operations;
 
+import gestion.ModelCommand;
 import repository.Model;
 import transport.arret.Lieu;
 
