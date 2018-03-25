@@ -1,5 +1,6 @@
-package repository;
+package repository.model;
 
+import repository.Model;
 import transport.arret.AeroportFactory;
 import transport.cie.CieAerienneFactory;
 import transport.itineraire.VolFactory;

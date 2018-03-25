@@ -1,5 +1,6 @@
-package repository;
+package repository.model;
 
+import repository.Model;
 import transport.arret.PortFactory;
 import transport.cie.CieCroisiereFactory;
 import transport.itineraire.CroisiereFactory;

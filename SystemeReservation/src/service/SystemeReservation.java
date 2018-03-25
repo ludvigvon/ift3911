@@ -1,10 +1,10 @@
 package service;
 
 import gestion.OperationsAdmin;
-import repository.AvionModel;
-import repository.CroisiereModel;
 import repository.Model;
-import repository.TrainModel;
+import repository.model.AvionModel;
+import repository.model.CroisiereModel;
+import repository.model.TrainModel;
 
 public class SystemeReservation {
 
