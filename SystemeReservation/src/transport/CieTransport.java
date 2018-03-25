@@ -1,4 +1,4 @@
-package transport.cie;
+package transport;
 
 public abstract class CieTransport {
 	protected String id;

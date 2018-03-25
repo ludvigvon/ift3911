@@ -1,6 +1,4 @@
-package transport.place;
-
-import transport.section.BaseSection;
+package transport;
 
 public abstract class Place {
 	public BaseSection section;

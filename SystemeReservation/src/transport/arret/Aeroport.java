@@ -1,5 +1,7 @@
 package transport.arret;
 
+import transport.Arret;
+
 public class Aeroport extends Arret {
 
 	public Aeroport(Lieu ville) {		

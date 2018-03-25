@@ -1,5 +1,8 @@
 package transport.cie;
 
+import transport.CieFactory;
+import transport.CieTransport;
+
 public class CieCroisiereFactory extends CieFactory {
 
 	private static CieCroisiereFactory instance = null;

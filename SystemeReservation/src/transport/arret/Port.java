@@ -1,5 +1,7 @@
 package transport.arret;
 
+import transport.Arret;
+
 public class Port extends Arret {
 
 	public Port(Lieu ville) {

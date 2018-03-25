@@ -2,7 +2,8 @@ package transport.section;
 
 import java.util.List;
 
-import transport.place.Place;
+import transport.Place;
+import transport.SectionPaquebot;
 
 public class Famille extends SectionPaquebot {
 

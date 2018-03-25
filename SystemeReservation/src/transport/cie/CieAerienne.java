@@ -1,5 +1,7 @@
 package transport.cie;
 
+import transport.CieTransport;
+
 public class CieAerienne extends CieTransport {
 
 	public CieAerienne(String name) {

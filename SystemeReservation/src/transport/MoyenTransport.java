@@ -1,7 +1,6 @@
-package transport.moyen;
+package transport;
 
 import java.util.List;
-import transport.section.BaseSection;
 
 public abstract class MoyenTransport {
 	public String modele;

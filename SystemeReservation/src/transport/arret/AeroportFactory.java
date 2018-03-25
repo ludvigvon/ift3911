@@ -1,5 +1,8 @@
 package transport.arret;
 
+import transport.Arret;
+import transport.ArretFactory;
+
 public class AeroportFactory extends ArretFactory {
 
 	private static AeroportFactory instance = null;

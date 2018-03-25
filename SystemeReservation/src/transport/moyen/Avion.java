@@ -2,7 +2,8 @@ package transport.moyen;
 
 import java.util.List;
 
-import transport.section.BaseSection;
+import transport.BaseSection;
+import transport.MoyenTransport;
 
 public class Avion extends MoyenTransport {
 

@@ -1,7 +1,6 @@
-package transport.section;
+package transport;
 
 import java.util.List;
-import transport.place.Place;
 
 public abstract class BaseSection {
 	public List<Place> places;

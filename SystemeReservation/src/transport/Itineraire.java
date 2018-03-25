@@ -1,11 +1,7 @@
-package transport.itineraire;
+package transport;
 
 import java.util.Date;
 import java.util.List;
-
-import transport.arret.Arret;
-import transport.cie.CieTransport;
-import transport.moyen.MoyenTransport;
 
 public abstract class Itineraire {
 	public String id;

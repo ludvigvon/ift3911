@@ -1,5 +1,8 @@
 package transport.arret;
 
+import transport.Arret;
+import transport.ArretFactory;
+
 public class GareFactory extends ArretFactory {
 
 	private static GareFactory instance = null;

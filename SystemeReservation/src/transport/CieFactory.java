@@ -1,4 +1,4 @@
-package transport.cie;
+package transport;
 
 public abstract class CieFactory {
 

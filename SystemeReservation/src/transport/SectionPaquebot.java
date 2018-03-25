@@ -1,8 +1,6 @@
-package transport.section;
+package transport;
 
 import java.util.List;
-
-import transport.place.Place;
 
 public abstract class SectionPaquebot extends BaseSection {
 

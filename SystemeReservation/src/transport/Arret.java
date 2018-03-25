@@ -1,4 +1,6 @@
-package transport.arret;
+package transport;
+
+import transport.arret.Lieu;
 
 public abstract class Arret {
 	protected String id;

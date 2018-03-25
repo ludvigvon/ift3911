@@ -3,9 +3,11 @@ package transport.itineraire;
 import java.util.Date;
 import java.util.List;
 
-import transport.arret.Arret;
-import transport.cie.CieTransport;
-import transport.moyen.MoyenTransport;
+import transport.Arret;
+import transport.CieTransport;
+import transport.Itineraire;
+import transport.ItineraireFactory;
+import transport.MoyenTransport;
 
 public class CroisiereFactory extends ItineraireFactory {
 

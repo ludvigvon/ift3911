@@ -1,6 +1,7 @@
 package transport.place;
 
-import transport.section.BaseSection;
+import transport.BaseSection;
+import transport.Place;
 
 public class Siege extends Place {
 	public String rangee, colonne;
