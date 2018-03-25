@@ -9,8 +9,11 @@ public abstract class Arret {
 	public Arret(Lieu ville) {
 		this.ville = ville;
 		this.id = generateUniqueId();
-	}	
-	
+	}
+
+	public String getId() {
+		return id;
+	}
+
 	protected abstract String generateUniqueId();
 }
-

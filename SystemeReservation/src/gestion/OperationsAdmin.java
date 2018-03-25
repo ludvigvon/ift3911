@@ -13,14 +13,18 @@ import transport.arret.Lieu;
 
 public class OperationsAdmin implements Observer {
 
+	private Command cmd;
 	private Model model;
 		
 	public OperationsAdmin(Model model) {
 		this.model = model;
 	}
 
+	@SuppressWarnings("unchecked")
 	public Arret createArret(Lieu ville) {
-		return model.createArret(ville);
+		cmd = new CreateArretCommand(model, ville);
+		cmd.execute();
+		return ((ModelCommandWithResult<Arret>)cmd).getResult();
 	}
 
 	public void modifyArret(Lieu ville) {
@@ -53,6 +57,12 @@ public class OperationsAdmin implements Observer {
 	
 	public void deleteItineraire(String id) {
 		model.deleteItineraire(id);
+	}
+	
+	public void undo() {
+		if (cmd != null)
+			cmd.undo();
+		cmd = null;
 	}
 	
 	@Override
