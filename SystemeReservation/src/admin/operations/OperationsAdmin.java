@@ -80,7 +80,7 @@ public class OperationsAdmin implements Observer {
 
 	@Override
 	public void update() {
-		// TODO Auto-generated method stub
+		// TODO shared model has been modified. make necessary changes to synchronize view. 
 
 	}
 

@@ -1,6 +1,7 @@
 package service;
 
 import admin.operations.OperationsAdmin;
+import client.operations.OperationsClient;
 import repository.Model;
 import repository.model.AvionModel;
 import repository.model.CroisiereModel;
@@ -16,6 +17,10 @@ public class SystemeReservation {
 	private OperationsAdmin adminCroisieres;
 	private OperationsAdmin adminTrains;
 	
+	private OperationsClient clientVols;
+	private OperationsClient clientCroisieres;
+	private OperationsClient clientTrains;
+	
 	public SystemeReservation() {
 		avionModel = new AvionModel();
 		croisiereModel = new CroisiereModel();
@@ -24,14 +29,18 @@ public class SystemeReservation {
 		adminVols = new OperationsAdmin(avionModel);
 		adminCroisieres = new OperationsAdmin(croisiereModel);
 		adminTrains = new OperationsAdmin(trainModel);
-		
-		
-		
-		
+				
+		clientVols = new OperationsClient(avionModel);
+		clientCroisieres = new OperationsClient(croisiereModel);
+		clientTrains = new OperationsClient(trainModel);
 		
 		avionModel.attach(adminVols);
 		croisiereModel.attach(adminCroisieres);
 		trainModel.attach(adminTrains);
+		
+		avionModel.attach(clientVols);
+		croisiereModel.attach(clientCroisieres);
+		trainModel.attach(clientTrains);
 	}
 	
 	
