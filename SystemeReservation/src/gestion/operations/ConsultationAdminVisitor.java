@@ -1,5 +1,7 @@
 package gestion.operations;
 
+import java.util.Optional;
+
 import gestion.ItineraireVisitor;
 import transport.BaseSection;
 import transport.Itineraire;
@@ -8,8 +10,8 @@ public class ConsultationAdminVisitor implements ItineraireVisitor {
 	
 	@Override
 	public void visit(Itineraire itineraire) {
-		
 		String infoSections = "";
+
 		for (BaseSection s : itineraire.transport.sections) {
 			infoSections += String.format("%s(%s/%s)%s|", s.getAbbrev(), s.getNbPlacesDisponibles(), s.getNbPlacesTotales(), s.getPrix());
 		}
@@ -20,9 +22,8 @@ public class ConsultationAdminVisitor implements ItineraireVisitor {
 				itineraire.getId(),
 				itineraire.depart.toString(), itineraire.arrivee.toString(),
 				infoSections);
-				
-		System.out.println(line);
 
+		System.out.println(line);
 	}
 
 }
