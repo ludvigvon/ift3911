@@ -7,7 +7,7 @@ import gestion.ItineraireVisitable;
 import gestion.ItineraireVisitor;
 
 public abstract class Itineraire implements ItineraireVisitable {
-	public String id;
+	private String id;
 	public List<Arret> arrets;
 	public MoyenTransport transport;
 	public CieTransport cie;

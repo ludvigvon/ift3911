@@ -18,4 +18,8 @@ public abstract class Place {
 	public void setNextState(PlaceState state) {
 		this.currentState = state;
 	}
+	
+	public PlaceState getState() {
+		return currentState;
+	}
 }
