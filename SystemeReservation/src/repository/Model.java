@@ -3,6 +3,7 @@ package repository;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.Optional;
 
 import transport.Arret;
 import transport.ArretFactory;
@@ -34,11 +35,19 @@ public abstract class Model implements Subject {
 		return arret;
 	}
 
-	public void modifyArret(Lieu ville) {
+	public void modifyArret(String id, Lieu ville) {
+		Optional<Arret> arret = arrets.stream().filter(a -> a.getId().equals(id)).findFirst();
+			
+		arret.ifPresent(a -> a.ville = ville);
+		
 		notifyObservers();
 	};
 
 	public void deleteArret(String id) {
+		Optional<Arret> arret = arrets.stream().filter(a -> a.getId().equals(id)).findFirst();
+		
+		arret.ifPresent(a -> arrets.remove(a));
+		
 		notifyObservers();
 	};
 

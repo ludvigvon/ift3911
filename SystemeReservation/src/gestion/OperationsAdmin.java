@@ -27,8 +27,9 @@ public class OperationsAdmin implements Observer {
 		return ((ModelCommandWithResult<Arret>)cmd).getResult();
 	}
 
-	public void modifyArret(Lieu ville) {
-		model.modifyArret(ville);
+	public void modifyArret(String id, Lieu ville) {
+		cmd = new ModifyArretCommand(model, id, ville);
+		cmd.execute();
 	}
 	
 	public void deleteArret(String id) {
