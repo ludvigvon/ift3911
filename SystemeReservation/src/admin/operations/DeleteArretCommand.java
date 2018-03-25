@@ -1,4 +1,4 @@
-package gestion.operations;
+package admin.operations;
 
 import gestion.ModelCommand;
 import repository.Model;

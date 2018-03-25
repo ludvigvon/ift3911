@@ -1,4 +1,4 @@
-package gestion.operations;
+package client.operations;
 
 import java.util.Optional;
 

@@ -1,6 +1,6 @@
 package service;
 
-import gestion.operations.OperationsAdmin;
+import admin.operations.OperationsAdmin;
 import repository.Model;
 import repository.model.AvionModel;
 import repository.model.CroisiereModel;
