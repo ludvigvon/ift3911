@@ -8,7 +8,7 @@ import transport.Section;
 public class EcoPremium extends Section {
 
 	public EcoPremium(List<Place> places, double pleinTarif) {
-		super(places, pleinTarif);
+		super(places, pleinTarif, "P");
 	}
 
 	@Override

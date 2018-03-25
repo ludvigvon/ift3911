@@ -8,7 +8,7 @@ import transport.SectionPaquebot;
 public class Suite extends SectionPaquebot {
 
 	public Suite(List<Place> places, double pleinTarif) {
-		super(places, pleinTarif);
+		super(places, pleinTarif, "S");
 	}
 
 	@Override

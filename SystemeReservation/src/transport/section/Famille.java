@@ -8,7 +8,7 @@ import transport.SectionPaquebot;
 public class Famille extends SectionPaquebot {
 
 	public Famille(List<Place> places, double pleinTarif) {
-		super(places, pleinTarif);
+		super(places, pleinTarif, "F");
 	}
 
 	@Override

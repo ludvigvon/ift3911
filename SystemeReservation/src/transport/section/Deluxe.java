@@ -8,7 +8,7 @@ import transport.SectionPaquebot;
 public class Deluxe extends SectionPaquebot {
 
 	public Deluxe(List<Place> places, double pleinTarif) {
-		super(places, pleinTarif);
+		super(places, pleinTarif, "D");
 	}
 
 	@Override
