@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 import transport.Arret;
 import transport.ArretFactory;
@@ -68,6 +70,14 @@ public abstract class Model implements Subject {
 		notifyObservers();
 	};
 
+	public Optional<Itineraire> getItineraire(String id){
+		return itineraires.stream().filter(a -> a.getId().equals(id)).findFirst();
+	}
+	
+	public List<Itineraire> getItineraires(String cieName){
+		return itineraires.stream().filter(a -> a.cie.name == cieName).collect(Collectors.toList());
+	}
+	
 	public Itineraire createItineraire(List<Arret> arrets, MoyenTransport transport, CieTransport cie, Date depart, Date arrivee) {
 		Itineraire itineraire = itineraireFactory.CreateItineraire(arrets, transport, cie, depart, arrivee);
 		itineraires.add(itineraire);

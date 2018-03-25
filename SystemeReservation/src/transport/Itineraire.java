@@ -3,7 +3,10 @@ package transport;
 import java.util.Date;
 import java.util.List;
 
-public abstract class Itineraire {
+import gestion.ItineraireVisitable;
+import gestion.ItineraireVisitor;
+
+public abstract class Itineraire implements ItineraireVisitable {
 	public String id;
 	public List<Arret> arrets;
 	public MoyenTransport transport;
@@ -20,6 +23,15 @@ public abstract class Itineraire {
 		this.arrivee = arrivee;
 	}
 
+	public String getId() {
+		return this.id;
+	}
+	
 	abstract protected String generateUniqueId();
+
+	@Override
+	public void accept(ItineraireVisitor visitor) {
+		visitor.visit(this);
+	}
 
 }
