@@ -14,8 +14,8 @@ public abstract class Itineraire implements ItineraireVisitable {
 	public Date depart;
 	public Date arrivee;
 
-	public Itineraire(List<Arret> arrets, MoyenTransport transport, CieTransport cie, Date depart, Date arrivee) {
-		this.id = generateUniqueId();
+	public Itineraire(String id, List<Arret> arrets, MoyenTransport transport, CieTransport cie, Date depart, Date arrivee) {
+		this.id = id;
 		this.arrets = arrets;
 		this.transport = transport;
 		this.cie = cie;
@@ -27,8 +27,6 @@ public abstract class Itineraire implements ItineraireVisitable {
 		return this.id;
 	}
 	
-	abstract protected String generateUniqueId();
-
 	@Override
 	public void accept(ItineraireVisitor visitor) {
 		visitor.visit(this);

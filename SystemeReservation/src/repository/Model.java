@@ -53,8 +53,8 @@ public abstract class Model implements Subject {
 		notifyObservers();
 	};
 
-	public CieTransport createCie(String name) {
-		CieTransport cie = cieFactory.CreateCie(name);
+	public CieTransport createCie(String id, String name) {
+		CieTransport cie = cieFactory.CreateCie(id, name);
 		compagnies.add(cie);
 
 		notifyObservers();
@@ -78,8 +78,8 @@ public abstract class Model implements Subject {
 		return itineraires.stream().filter(a -> a.cie.name == cieName).collect(Collectors.toList());
 	}
 	
-	public Itineraire createItineraire(List<Arret> arrets, MoyenTransport transport, CieTransport cie, Date depart, Date arrivee) {
-		Itineraire itineraire = itineraireFactory.CreateItineraire(arrets, transport, cie, depart, arrivee);
+	public Itineraire createItineraire(String id, List<Arret> arrets, MoyenTransport transport, CieTransport cie, Date depart, Date arrivee) {
+		Itineraire itineraire = itineraireFactory.CreateItineraire(id, arrets, transport, cie, depart, arrivee);
 		itineraires.add(itineraire);
 		
 		notifyObservers();

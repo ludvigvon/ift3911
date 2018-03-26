@@ -18,8 +18,8 @@ public class CieAerienneFactory extends CieFactory {
 	}
 
 	@Override
-	protected CieTransport FabricateCie(String name) {
-		return new CieAerienne(name);
+	protected CieTransport FabricateCie(String id,String name) {
+		return new CieAerienne(id, name);
 	}
 
 }

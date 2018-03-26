@@ -23,7 +23,7 @@ public class DeleteArretCommand extends ModelCommand {
 	@Override
 	public void undo() {
 		if (ville != null)
-			model.createArret(this.ville);
+			model.createArret(id, this.ville);
 	}
 
 }

@@ -10,15 +10,15 @@ public class CreateArretCommand extends ModelCommandWithResult<Arret> {
 	String id;
 	Lieu ville;
 	
-	public CreateArretCommand(Model model, Lieu ville) {
+	public CreateArretCommand(Model model, String id, Lieu ville) {
 		super(model);
+		this.id = id;
 		this.ville = ville;		
 	}
 
 	@Override
 	public void execute() {
-		result = model.createArret(ville);
-		id = result.getId();
+		result = model.createArret(id, ville);		
 	}
 
 	@Override

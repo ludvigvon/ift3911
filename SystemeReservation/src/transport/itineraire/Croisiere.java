@@ -10,14 +10,9 @@ import transport.MoyenTransport;
 
 public class Croisiere extends Itineraire {
 
-	public Croisiere(List<Arret> arrets, MoyenTransport transport, CieTransport cie, Date depart, Date arrivee) {
-		super(arrets, transport, cie, depart, arrivee);
-	}
-
-	@Override
-	protected String generateUniqueId() {
-		// TODO Auto-generated method stub
-		return null;
+	public Croisiere(String id, List<Arret> arrets, MoyenTransport transport, CieTransport cie, Date depart,
+			Date arrivee) {
+		super(id, arrets, transport, cie, depart, arrivee);
 	}
 
 }

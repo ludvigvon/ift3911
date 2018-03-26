@@ -23,8 +23,8 @@ public class OperationsAdmin implements Observer {
 	}
 
 	@SuppressWarnings("unchecked")
-	public Arret createArret(Lieu ville) {
-		cmd = new CreateArretCommand(model, ville);
+	public Arret createArret(String id, Lieu ville) {
+		cmd = new CreateArretCommand(model, id, ville);
 		cmd.execute();
 		return ((ModelCommandWithResult<Arret>) cmd).getResult();
 	}
@@ -39,8 +39,8 @@ public class OperationsAdmin implements Observer {
 		cmd.execute();
 	}
 
-	public CieTransport createCie(String name) {
-		return model.createCie(name);
+	public CieTransport createCie(String id, String name) {
+		return model.createCie(id, name);
 	}
 
 	public void modifyCie(String name) {
@@ -51,9 +51,9 @@ public class OperationsAdmin implements Observer {
 		model.deleteCie(id);
 	}
 
-	public Itineraire createItineraire(List<Arret> arrets, MoyenTransport transport, CieTransport cie, Date depart,
+	public Itineraire createItineraire(String id, List<Arret> arrets, MoyenTransport transport, CieTransport cie, Date depart,
 			Date arrivee) {
-		return model.createItineraire(arrets, transport, cie, depart, arrivee);
+		return model.createItineraire(id, arrets, transport, cie, depart, arrivee);
 	}
 
 	public void modifyItineraire(List<Arret> arrets, MoyenTransport transport, CieTransport cie, Date depart,

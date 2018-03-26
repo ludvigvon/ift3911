@@ -10,14 +10,8 @@ import transport.MoyenTransport;
 
 public class Vol extends Itineraire {
 
-	public Vol(List<Arret> arrets, MoyenTransport transport, CieTransport cie, Date depart, Date arrivee) {
-		super(arrets, transport, cie, depart, arrivee);
-	}
-
-	@Override
-	protected String generateUniqueId() {
-		// TODO Auto-generated method stub
-		return null;
+	public Vol(String id, List<Arret> arrets, MoyenTransport transport, CieTransport cie, Date depart, Date arrivee) {
+		super(id, arrets, transport, cie, depart, arrivee);
 	}
 
 }

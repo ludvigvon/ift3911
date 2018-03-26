@@ -24,9 +24,11 @@ public class VolFactory extends ItineraireFactory {
 	}
 
 	@Override
-	protected Itineraire FabricateItineraire(List<Arret> arrets, MoyenTransport transport, CieTransport cie,
+	protected Itineraire FabricateItineraire(String id, List<Arret> arrets, MoyenTransport transport, CieTransport cie,
 			Date depart, Date arrivee) {
-		return new Vol(arrets, transport, cie, depart, arrivee);
+		return new Vol(id, arrets, transport, cie, depart, arrivee);
 	}
+
+	
 
 }

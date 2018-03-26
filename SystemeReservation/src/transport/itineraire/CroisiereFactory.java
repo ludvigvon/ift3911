@@ -24,9 +24,9 @@ public class CroisiereFactory extends ItineraireFactory {
 	}
 
 	@Override
-	protected Itineraire FabricateItineraire(List<Arret> arrets, MoyenTransport transport, CieTransport cie,
+	protected Itineraire FabricateItineraire(String id, List<Arret> arrets, MoyenTransport transport, CieTransport cie,
 			Date depart, Date arrivee) {
-		return new Croisiere(arrets, transport, cie, depart, arrivee);
+		return new Croisiere(id, arrets, transport, cie, depart, arrivee);
 	}
 
 }
