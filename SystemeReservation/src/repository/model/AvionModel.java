@@ -9,7 +9,6 @@ import java.util.List;
 import repository.Model;
 import transport.Arret;
 import transport.BaseSection;
-import transport.Itineraire;
 import transport.Place;
 import transport.arret.Aeroport;
 import transport.arret.AeroportFactory;
@@ -24,6 +23,7 @@ import transport.section.Affaire;
 import transport.section.EcoPremium;
 import transport.section.Economique;
 import transport.section.Premiere;
+import transport.Itineraire;
 
 public class AvionModel extends Model {
 
@@ -79,6 +79,8 @@ public class AvionModel extends Model {
 		itineraires.add(new Vol("AC481", aeroports, avion, compagnies.get(0), depart, arrivee));
 		itineraires.add(new Vol("DE555", aeroports, avion, compagnies.get(0), depart, arrivee));
 		itineraires.add(new Vol("YZ333", aeroports, avion, compagnies.get(0), depart, arrivee));
+		
+		
     }
     
 
