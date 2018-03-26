@@ -4,13 +4,8 @@ import transport.Arret;
 
 public class Gare extends Arret {
 
-	public Gare(Lieu ville) {
-		super(ville);		
+	public Gare(String id, Lieu ville) {
+		super(id, ville);		
 	}
-
-	@Override
-	protected String generateUniqueId() {
-		// TODO Auto-generated method stub
-		return null;
-	}
+	
 }

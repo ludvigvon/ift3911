@@ -20,9 +20,9 @@ public abstract class Model implements Subject {
 
 	private List<Observer> observers = new ArrayList<Observer>();
 
-	private List<Arret> arrets = new ArrayList<Arret>();
-	private List<CieTransport> compagnies = new ArrayList<CieTransport>();
-	private List<Itineraire> itineraires = new ArrayList<Itineraire>();
+	protected List<Arret> arrets = new ArrayList<Arret>();
+	protected List<CieTransport> compagnies = new ArrayList<CieTransport>();
+	protected List<Itineraire> itineraires = new ArrayList<Itineraire>();
 
 	protected ArretFactory arretFactory;
 	protected CieFactory cieFactory;
@@ -32,8 +32,8 @@ public abstract class Model implements Subject {
 		return arrets.stream().filter(a -> a.getId().equals(id)).findFirst();
 	}
 	
-	public Arret createArret(Lieu ville) {
-		Arret arret = arretFactory.CreateArret(ville);
+	public Arret createArret(String id, Lieu ville) {
+		Arret arret = arretFactory.CreateArret(id, ville);
 		arrets.add(arret);
 
 		notifyObservers();

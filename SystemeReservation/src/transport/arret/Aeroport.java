@@ -4,15 +4,8 @@ import transport.Arret;
 
 public class Aeroport extends Arret {
 
-	public Aeroport(Lieu ville) {		
-		super(ville);
+	public Aeroport(String id, Lieu ville) {		
+		super(id, ville);
 	}
-
-	@Override
-	protected String generateUniqueId() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
 
 }

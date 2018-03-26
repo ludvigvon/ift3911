@@ -6,14 +6,12 @@ public abstract class Arret {
 	protected String id;
 	public Lieu ville;
 
-	public Arret(Lieu ville) {
+	public Arret(String id, Lieu ville) {
+		this.id = id;
 		this.ville = ville;
-		this.id = generateUniqueId();
 	}
 
 	public String getId() {
 		return id;
 	}
-
-	protected abstract String generateUniqueId();
 }

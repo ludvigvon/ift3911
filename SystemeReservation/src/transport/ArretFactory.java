@@ -4,9 +4,9 @@ import transport.arret.Lieu;
 
 public abstract class ArretFactory {
 
-	public Arret CreateArret(Lieu ville) {
-		return FabricateArret(ville);
+	public Arret CreateArret(String id, Lieu ville) {
+		return FabricateArret(id, ville);
 	}
 
-	protected abstract Arret FabricateArret(Lieu ville); 
+	protected abstract Arret FabricateArret(String id, Lieu ville); 
 }

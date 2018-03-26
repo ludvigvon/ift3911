@@ -18,8 +18,8 @@ public class AeroportFactory extends ArretFactory {
 	}
 	
 	@Override
-	public Arret FabricateArret(Lieu ville) {
-		return new Aeroport(ville); 
+	public Arret FabricateArret(String id, Lieu ville) {
+		return new Aeroport(id, ville); 
 	}
 
 }
