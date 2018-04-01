@@ -2,6 +2,7 @@ package transport;
 
 import java.util.Date;
 import java.util.List;
+import java.util.Optional;
 
 import gestion.ItineraireVisitable;
 import gestion.ItineraireVisitor;
@@ -25,6 +26,16 @@ public abstract class Itineraire implements ItineraireVisitable {
 
 	public String getId() {
 		return this.id;
+	}
+	
+	public Place getPlace(String sectionAbbrev) {
+		Optional<BaseSection> section = transport.sections.stream().filter(s -> s.abbrev == sectionAbbrev).findFirst();
+		Optional<Place> place = null;
+		if (section.isPresent())
+			 place = section.get().places.stream().filter(p -> p.isDisponible()).findFirst();
+		if (place.isPresent())
+			return place.get();			
+		return null;
 	}
 	
 	@Override

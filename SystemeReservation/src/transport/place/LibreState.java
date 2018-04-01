@@ -5,8 +5,7 @@ import transport.Place;
 public class LibreState implements transport.PlaceState {
 
 	@Override
-	public void goNext(Place context) {
-		// TODO Auto-generated method stub
+	public void goNext(Place context) {		
 		context.setNextState(new ReserveState());
 	}
 

@@ -14,7 +14,7 @@ public class SystemeReservation {
 	private Model trainModel;
 	
 	private OperationsAdmin adminVols;
-	private OperationsAdmin adminCroisieres;
+	private OperationsAdmin adminCroisieres;	
 	private OperationsAdmin adminTrains;
 	
 	private OperationsClient clientVols;
@@ -43,6 +43,29 @@ public class SystemeReservation {
 		trainModel.attach(clientTrains);
 	}
 	
-	
+	public OperationsAdmin getAdminVols() {
+		return adminVols;
+	}
+
+	public OperationsAdmin getAdminCroisieres() {
+		return adminCroisieres;
+	}
+
+	public OperationsAdmin getAdminTrains() {
+		return adminTrains;
+	}
+
+	public OperationsClient getClientVols() {
+		return clientVols;
+	}
+
+	public OperationsClient getClientCroisieres() {
+		return clientCroisieres;
+	}
+
+	public OperationsClient getClientTrains() {
+		return clientTrains;
+	}
+
 	
 }

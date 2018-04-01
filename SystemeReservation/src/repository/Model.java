@@ -9,12 +9,14 @@ import java.util.stream.Stream;
 
 import transport.Arret;
 import transport.ArretFactory;
+import transport.BaseSection;
 import transport.CieFactory;
 import transport.CieTransport;
 import transport.Itineraire;
 import transport.ItineraireFactory;
 import transport.MoyenTransport;
 import transport.arret.Lieu;
+import transport.cie.CieAerienne;
 
 public abstract class Model implements Subject {
 
@@ -36,9 +38,7 @@ public abstract class Model implements Subject {
 
 	protected abstract void loadModel();
 	
-	public Optional<Arret> getArret(String id){
-		return arrets.stream().filter(a -> a.getId().equals(id)).findFirst();
-	}
+	
 	
 	public Arret createArret(String id, Lieu ville) {
 		Arret arret = arretFactory.CreateArret(id, ville);
@@ -61,6 +61,10 @@ public abstract class Model implements Subject {
 		notifyObservers();
 	};
 
+	public Optional<Arret> getArret(String id){
+		return arrets.stream().filter(a -> a.getId().equals(id)).findFirst();
+	}
+	
 	public CieTransport createCie(String id, String name) {
 		CieTransport cie = cieFactory.CreateCie(id, name);
 		compagnies.add(cie);
@@ -70,7 +74,7 @@ public abstract class Model implements Subject {
 		return cie;
 	}
 
-	public void modifyCie(String name) {
+	public void modifyCie(String id, String name) {
 		notifyObservers();
 	};
 
@@ -78,12 +82,31 @@ public abstract class Model implements Subject {
 		notifyObservers();
 	};
 
+	public Optional<CieTransport> getCie(String id){
+		return compagnies.stream().filter(a -> a.getId().equals(id)).findFirst();
+	}
+	
+	public MoyenTransport getMoyenTransport(String cie, String modele){
+		Optional<CieTransport> c = this.getCie(cie);
+		if (c.isPresent())
+			return c.get().getMoyenTransport(modele);
+		return null;
+	}
+	
 	public Optional<Itineraire> getItineraire(String id){
 		return itineraires.stream().filter(a -> a.getId().equals(id)).findFirst();
 	}
 	
 	public List<Itineraire> getItineraires(String cieName){
 		return itineraires.stream().filter(a -> a.cie.name == cieName).collect(Collectors.toList());
+	}
+		
+	public List<Itineraire> getItineraires(Arret origine, Arret destination, Date depart){
+		return itineraires.stream().filter(
+				i -> i.arrets.get(0) == origine && 
+				i.arrets.get(i.arrets.size()-1) == destination &&
+				i.depart.after(depart)
+				).collect(Collectors.toList());
 	}
 	
 	public Itineraire createItineraire(String id, List<Arret> arrets, MoyenTransport transport, CieTransport cie, Date depart, Date arrivee) {
@@ -95,7 +118,7 @@ public abstract class Model implements Subject {
 		return itineraire;
 	}
 
-	public void modifyItineraire(List<Arret> arrets, MoyenTransport transport, CieTransport cie, Date depart, Date arrivee) {
+	public void modifyItineraire(String id, List<Arret> arrets, MoyenTransport transport, CieTransport cie, Date depart, Date arrivee) {
 		notifyObservers();
 	};
 

@@ -13,5 +13,4 @@ public class Vol extends Itineraire {
 	public Vol(String id, List<Arret> arrets, MoyenTransport transport, CieTransport cie, Date depart, Date arrivee) {
 		super(id, arrets, transport, cie, depart, arrivee);
 	}
-
 }

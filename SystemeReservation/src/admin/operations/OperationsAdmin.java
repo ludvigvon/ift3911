@@ -2,6 +2,7 @@ package admin.operations;
 
 import java.util.Date;
 import java.util.List;
+import java.util.Optional;
 
 import gestion.Command;
 import gestion.ModelCommandWithResult;
@@ -39,26 +40,48 @@ public class OperationsAdmin implements Observer {
 		cmd.execute();
 	}
 
+	public Arret getArret(String id) {
+		Optional<Arret> arret = model.getArret(id);
+		
+		if (arret.isPresent())
+			return arret.get();
+		else
+			return null;
+	}
+	
 	public CieTransport createCie(String id, String name) {
 		return model.createCie(id, name);
 	}
 
-	public void modifyCie(String name) {
-		model.modifyCie(name);
+	public void modifyCie(String id, String name) {
+		model.modifyCie(id, name);
 	}
 
 	public void deleteCie(String id) {
 		model.deleteCie(id);
 	}
 
+	public CieTransport getCie(String id) {
+		Optional<CieTransport> cie = model.getCie(id);
+		
+		if (cie.isPresent())
+			return cie.get();
+		else
+			return null;
+	}
+	
+	public MoyenTransport getMoyenTransport(String cie, String modele) {
+		return model.getMoyenTransport(cie, modele);
+	}
+	
 	public Itineraire createItineraire(String id, List<Arret> arrets, MoyenTransport transport, CieTransport cie, Date depart,
 			Date arrivee) {
 		return model.createItineraire(id, arrets, transport, cie, depart, arrivee);
 	}
 
-	public void modifyItineraire(List<Arret> arrets, MoyenTransport transport, CieTransport cie, Date depart,
+	public void modifyItineraire(String id, List<Arret> arrets, MoyenTransport transport, CieTransport cie, Date depart,
 			Date arrivee) {
-		model.modifyItineraire(arrets, transport, cie, depart, arrivee);
+		model.modifyItineraire(id, arrets, transport, cie, depart, arrivee);
 	}
 
 	public void deleteItineraire(String id) {

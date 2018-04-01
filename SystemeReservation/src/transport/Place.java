@@ -22,4 +22,8 @@ public abstract class Place {
 	public PlaceState getState() {
 		return currentState;
 	}
+	
+	public boolean isDisponible() {
+		return currentState instanceof LibreState;
+	}
 }
