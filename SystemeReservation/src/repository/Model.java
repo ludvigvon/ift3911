@@ -102,13 +102,13 @@ public abstract class Model implements Subject {
 		return itineraires.stream().filter(a -> a.getId().equals(id)).findFirst();
 	}
 
-	public List<Itineraire> getItineraires(String cieName) {
-		return itineraires.stream().filter(a -> a.cie.name == cieName).collect(Collectors.toList());
+	public List<Itineraire> getItineraires(String cieId) {
+		return itineraires.stream().filter(a -> a.cie.getId() == cieId).collect(Collectors.toList());
 	}
 
 	public List<Itineraire> getItineraires(Arret origine, Arret destination, Date depart) {
-		return itineraires.stream().filter(i -> i.arrets.get(0) == origine
-				&& i.arrets.get(i.arrets.size() - 1) == destination && i.depart.after(depart))
+		return itineraires.stream().filter(i -> i.arrets.get(0).getId() == origine.getId()
+				&& i.arrets.get(i.arrets.size() - 1).getId() == destination.getId() && i.depart.after(depart))
 				.collect(Collectors.toList());
 	}
 
@@ -164,7 +164,7 @@ public abstract class Model implements Subject {
 		return null;
 	}
 
-	public double modifierReservation(String noReservation, String noItineraire, String sectionAbbrev) {
+	public Modification modifierReservation(String noReservation, String noItineraire, String sectionAbbrev) {
 		Optional<Itineraire> itineraire = this.getItineraire(noItineraire);
 		Optional<Reservation> reservation = this.getReservation(noReservation);
 
@@ -173,14 +173,13 @@ public abstract class Model implements Subject {
 
 			notifyObservers();
 
-			return m.getSolde();
-
+			return m;
 		}
 
-		return 0;
+		return null;
 	}
 
-	public double annulerReservation(String noReservation) {
+	public Annulation annulerReservation(String noReservation) {
 		Optional<Reservation> reservation = this.getReservation(noReservation);
 
 		if (reservation.isPresent()) {
@@ -188,10 +187,10 @@ public abstract class Model implements Subject {
 
 			notifyObservers();
 
-			return a.getSolde();
+			return a;
 		}
 
-		return 0;
+		return null;
 	}
 
 	@Override

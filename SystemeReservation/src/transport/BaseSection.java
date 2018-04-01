@@ -12,6 +12,7 @@ public abstract class BaseSection {
 	public BaseSection(List<Place> places, double pleinTarif, String abbrev) {
 		this.places = places;
 		this.pleinTarif = pleinTarif;
+		this.abbrev = abbrev;
 	}
 	
 	public double getPrix() {

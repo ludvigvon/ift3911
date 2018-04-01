@@ -1,11 +1,14 @@
 package transport;
 
+import reservation.Reservation;
 import transport.place.LibreState;
 
 public abstract class Place {
 	public BaseSection section;
+	public Reservation reservation;
+	
 	private PlaceState currentState;
-
+	
 	public Place(BaseSection section) {
 		this.section = section;
 		this.currentState = new LibreState();
@@ -26,4 +29,5 @@ public abstract class Place {
 	public boolean isDisponible() {
 		return currentState instanceof LibreState;
 	}
+		
 }

@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import paiement.Paiement;
 import transport.Place;
 
 public class Reservation {
@@ -12,13 +13,14 @@ public class Reservation {
 	private Date dateHeureReservation;
 	private Place place;
 	public List<Changement> changements = new ArrayList<Changement>();
-	
+	public Paiement paiement;
 	
 	public Reservation(Place place) {
 		this.place = place;
 		this.dateHeureReservation = new Date();
 		this.id = generateNoReservation();
 		
+		place.reservation = this;
 		place.goNextState(); // passe a l'etat Reserve
 	}
 
@@ -37,7 +39,7 @@ public class Reservation {
 	public void setPlace(Place place) {
 		this.place = place;
 	}
-
+	
 	public Changement modifier(Place place) {
 		Changement c = new Modification(this, place);
 		changements.add(c);

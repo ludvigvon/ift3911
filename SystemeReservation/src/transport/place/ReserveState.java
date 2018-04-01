@@ -16,13 +16,14 @@ public class ReserveState implements PlaceState {
 
 	@Override
 	public void goNext(Place context) {
-		// TODO si annulation ou modif, LIBRE. Si paiement, CONFIRTME 		
 		LocalDateTime  now = LocalDateTime.now();
 		
 		long nbHrs = Duration.between(heureReservation, now).toHours();
-		
-		// si plus de 24h, redevient libre
-		if (nbHrs>=24) {
+				
+		if (context.reservation.paiement != null) { // si paiement, devient confimee
+			context.setNextState(new ConfirmeState());
+		}		
+		else if (nbHrs>=24) { // si plus de 24 heures et non payee, redevient libre
 			context.setNextState(new LibreState());
 		}
 			

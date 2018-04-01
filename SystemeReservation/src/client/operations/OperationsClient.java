@@ -34,11 +34,11 @@ public class OperationsClient implements Observer {
 	}
 	
 	public Annulation annuler(String noReservation) {
-		
+		return model.annulerReservation(noReservation);
 	}
 	
-	public Modification modifier(String noItineraire, String sectionAbbrev) {
-		
+	public Modification modifier(String noReservation, String noItineraire, String sectionAbbrev) {
+		return model.modifierReservation(noReservation, noItineraire, sectionAbbrev);
 	}
 	
 	@Override

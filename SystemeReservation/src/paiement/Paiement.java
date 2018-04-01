@@ -12,6 +12,7 @@ public class Paiement {
 		this.reservation = reservation;
 		this.client = client;
 		
+		reservation.paiement = this;
 		reservation.getPlace().goNextState(); // confirme
 		
 		Confirmation c = new Confirmation(this);
