@@ -9,7 +9,6 @@ import repository.Observer;
 import reservation.Reservation;
 import transport.Arret;
 import transport.Itineraire;
-import transport.Place;
 
 public class OperationsClient implements Observer {
 
@@ -27,14 +26,7 @@ public class OperationsClient implements Observer {
 	}
 	
 	public String reserverPlace(String noItineraire, String sectionAbbrev) {
-		Optional<Itineraire> itineraire = model.getItineraire(noItineraire);
-		
-		if (itineraire.isPresent()) {
-			Reservation r = new Reservation(itineraire.get().getPlace(sectionAbbrev));
-			return r.getId();		
-		} 			
-		
-		return null;	
+		return model.createReservation(noItineraire, sectionAbbrev).getId();			
 	}
 	
 	@Override

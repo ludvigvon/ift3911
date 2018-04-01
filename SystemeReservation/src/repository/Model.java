@@ -7,6 +7,7 @@ import java.util.Optional;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
+import reservation.Reservation;
 import transport.Arret;
 import transport.ArretFactory;
 import transport.BaseSection;
@@ -25,6 +26,8 @@ public abstract class Model implements Subject {
 	protected List<Arret> arrets = new ArrayList<Arret>();
 	protected List<CieTransport> compagnies = new ArrayList<CieTransport>();
 	protected List<Itineraire> itineraires = new ArrayList<Itineraire>();
+
+	protected List<Reservation> reservations = new ArrayList<Reservation>();
 
 	protected ArretFactory arretFactory;
 	protected CieFactory cieFactory;
@@ -126,6 +129,23 @@ public abstract class Model implements Subject {
 		notifyObservers();
 	};
 
+
+	public Reservation createReservation(String noItineraire, String sectionAbbrev) {
+		Optional<Itineraire> itineraire = this.getItineraire(noItineraire);
+		
+		if (itineraire.isPresent()) {
+			Reservation r = new Reservation(itineraire.get().getPlace(sectionAbbrev));
+			reservations.add(r);
+			
+			notifyObservers();
+			
+			return r;		
+		} 			
+		
+		return null;	
+	}
+	
+	
 	@Override
 	public void attach(Observer observer) {
 		observers.add(observer);

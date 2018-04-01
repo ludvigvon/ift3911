@@ -28,7 +28,8 @@ public class Program {
 		
 		// volet client
 		verificationVolsDisponibles();
-		reservationSiege();
+		String noreservation = reservationSiege();
+		
 		paiementSiege();
 		consulation();
 		changement();
@@ -103,9 +104,9 @@ public class Program {
 		systemeReservation.getClientVols().verifierDisponibilites(origine, destination, depart, "A");	
 	}
 
-	private static void reservationSiege() {
+	private static String reservationSiege() {
 		// on suppose que le client aura choisi un siege parmi les sièges affichés par l'operation verifierDisponibilites()
-		
+		return systemeReservation.getClientVols().reserverPlace("AC481", "A");
 	}
 	
 	private static void paiementSiege() {
