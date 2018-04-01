@@ -8,8 +8,10 @@ public class Paiement {
 	Client client;
 	String noConfirmation;
 	
-	public Paiement(Reservation reservation) {
+	public Paiement(Reservation reservation, Client client) {
 		this.reservation = reservation;
+		this.client = client;
+		
 		reservation.getPlace().goNextState(); // confirme
 		
 		Confirmation c = new Confirmation(this);

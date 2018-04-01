@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import paiement.Client;
 import transport.Arret;
 import transport.arret.Aeroport;
 import transport.arret.Lieu;
@@ -28,12 +29,14 @@ public class Program {
 		
 		// volet client
 		verificationVolsDisponibles();
-		String noreservation = reservationSiege();
-		
-		paiementSiege();
-		consulation();
-		changement();
+		// on suppose que le client aura choisi un siege parmi les sièges affichés par l'operation verifierDisponibilites()
+		String noReservation = reservationSiege("AC481", "A");
+		paiement(noReservation, new Client());
+		annulation(noReservation);
+		changement(noReservation, "AC481", "E"); // on modifie la section
 	}
+
+	
 
 	private static void gererAeroports() {		
 		Aeroport aeroport = (Aeroport)systemeReservation.getAdminVols().createArret("XXX", new Lieu("ville", "pays"));
@@ -95,7 +98,7 @@ public class Program {
 		Aeroport destination = (Aeroport)systemeReservation.getAdminVols().getArret("ABC");
 		SimpleDateFormat sdf = new SimpleDateFormat("dd-M-yyyy hh:mm:ss");
 		String strDepart = "15-04-2018 10:20:00";		
-		Date depart = null, arrivee = null;
+		Date depart = null;
 		try {
 			depart = sdf.parse(strDepart);			
 		} catch (ParseException e) {
@@ -104,17 +107,21 @@ public class Program {
 		systemeReservation.getClientVols().verifierDisponibilites(origine, destination, depart, "A");	
 	}
 
-	private static String reservationSiege() {
-		// on suppose que le client aura choisi un siege parmi les sièges affichés par l'operation verifierDisponibilites()
-		return systemeReservation.getClientVols().reserverPlace("AC481", "A");
+	private static String reservationSiege(String noItineraire, String sectionAbbrev) {		
+		return systemeReservation.getClientVols().reserver(noItineraire, sectionAbbrev);
 	}
 	
-	private static void paiementSiege() {
-				
+	private static void paiement(String noReservation, Client client) {
+		systemeReservation.getClientVols().payer(noReservation, client);
 	}
 	
-	private static void changement() {
-				
+	private static void annulation(String noReservation) {
+		systemeReservation.getClientVols().annuler(noReservation);
+		
+	}
+	
+	private static void changement(String noReservation, String noItineraire, String sectionAbbrev) {
+		systemeReservation.getClientVols().modifier(noItineraire, sectionAbbrev);		
 	}
 
 	

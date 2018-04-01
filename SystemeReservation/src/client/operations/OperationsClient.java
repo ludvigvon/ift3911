@@ -2,11 +2,11 @@ package client.operations;
 
 import java.util.Date;
 import java.util.List;
-import java.util.Optional;
-
+import paiement.Client;
 import repository.Model;
 import repository.Observer;
-import reservation.Reservation;
+import reservation.Annulation;
+import reservation.Modification;
 import transport.Arret;
 import transport.Itineraire;
 
@@ -25,13 +25,25 @@ public class OperationsClient implements Observer {
 		}	
 	}
 	
-	public String reserverPlace(String noItineraire, String sectionAbbrev) {
+	public String reserver(String noItineraire, String sectionAbbrev) {
 		return model.createReservation(noItineraire, sectionAbbrev).getId();			
+	}
+	
+	public String payer(String noReservation, Client client) {
+		return model.payerReservation(noReservation, client);
+	}
+	
+	public Annulation annuler(String noReservation) {
+		
+	}
+	
+	public Modification modifier(String noItineraire, String sectionAbbrev) {
+		
 	}
 	
 	@Override
 	public void update() {
-		// TODO shared model has been modified. make necessary changes to synchronize view. 
+		// TODO modele a ete modifie, faire les modifs necessaires pour synchroniser vue
 	}
 
 }
