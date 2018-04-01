@@ -28,6 +28,14 @@ public abstract class Model implements Subject {
 	protected CieFactory cieFactory;
 	protected ItineraireFactory itineraireFactory;
 
+	
+	
+	public Model() {
+		loadModel();
+	}
+
+	protected abstract void loadModel();
+	
 	public Optional<Arret> getArret(String id){
 		return arrets.stream().filter(a -> a.getId().equals(id)).findFirst();
 	}

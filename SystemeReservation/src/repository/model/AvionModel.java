@@ -28,16 +28,14 @@ import transport.Itineraire;
 public class AvionModel extends Model {
 
 	public AvionModel() {
-
-		loadVols();
-
 		arretFactory = AeroportFactory.getInstance();
 		cieFactory = CieAerienneFactory.getInstance();
 		itineraireFactory = VolFactory.getInstance();
 	}
 	
-    private void loadVols() {
-    	arrets.add(new Aeroport("YUL", new Lieu("Montreal", "Canada")));
+	@Override
+	protected void loadModel() {
+		arrets.add(new Aeroport("YUL", new Lieu("Montreal", "Canada")));
 		arrets.add(new Aeroport("ABC", new Lieu("Toronto", "Canada")));
 		arrets.add(new Aeroport("XYZ", new Lieu("Caire", "Egypte")));
 
@@ -45,21 +43,20 @@ public class AvionModel extends Model {
 		compagnies.add(new CieAerienne("AIRABC", "Air Abc"));
 		compagnies.add(new CieAerienne("AIRXYZ", "Air Def"));
 
-		List<Place> sieges = new ArrayList<Place>();
 		List<BaseSection> sections = new ArrayList<BaseSection>();
 
-		sections.add(new Premiere(sieges, 350));
-		sections.add(new Affaire(sieges, 300));
-		sections.add(new EcoPremium(sieges, 250));
-		sections.add(new Economique(sieges, 200));
+		sections.add(new Premiere(new ArrayList<Place>(), 350));
+		sections.add(new Affaire(new ArrayList<Place>(), 300));
+		sections.add(new EcoPremium(new ArrayList<Place>(), 250));
+		sections.add(new Economique(new ArrayList<Place>(), 200));
 		
 		for (BaseSection section : sections) {
-			for (int i = 0; i < 50; i++) {
-				sieges.add(new Siege(section));	
+			for (int i = 0; i < 50; i++) {				
+				section.places.add(new Siege(section));	
 			}
 		}
 		
-		Avion avion = new Avion("MODEL1", sections);
+		Avion avion = new Avion("MODEL_AVION", sections);
 		
 		List<Arret> aeroports = new ArrayList<Arret>();
 		aeroports.add(arrets.get(0));    
@@ -80,8 +77,6 @@ public class AvionModel extends Model {
 		itineraires.add(new Vol("DE555", aeroports, avion, compagnies.get(0), depart, arrivee));
 		itineraires.add(new Vol("YZ333", aeroports, avion, compagnies.get(0), depart, arrivee));
 		
-		
-    }
-    
+	}
 
 }
