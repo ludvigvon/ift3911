@@ -32,7 +32,7 @@ public class CreateItineraireCommand extends ModelCommandWithResult<Itineraire> 
 
 	@Override
 	public void execute() {
-		model.createItineraire(id, arrets, transport, cie, depart, arrivee);
+		result = model.createItineraire(id, arrets, transport, cie, depart, arrivee);
 	}
 
 	@Override
