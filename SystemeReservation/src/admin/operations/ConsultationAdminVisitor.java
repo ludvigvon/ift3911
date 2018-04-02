@@ -22,7 +22,7 @@ public class ConsultationAdminVisitor implements ItineraireVisitor {
 		}
 		
 		
-		String line = String.format("%s - %s:[%s]%s(%s - %s)|%s", 
+		String line = String.format("%s-%s:[%s]%s(%s-%s)|%s", 
 				itineraire.arrets.get(0).getId(), 
 				itineraire.arrets.get(itineraire.arrets.size()-1).getId(),
 				itineraire.cie.getId(),

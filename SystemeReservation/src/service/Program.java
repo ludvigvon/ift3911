@@ -24,18 +24,35 @@ public class Program {
 		
 		systemeReservation = new SystemeReservation();
 
-		// volet admin
+		/*** volet admin ***/
 		gererAeroports();
+		System.out.println();
+		
 		gererCieAeriennes();
+		System.out.println();
+		
 		gererVols();
+		System.out.println();
+		
 		consulation();
-
-		// volet client
+		System.out.println();
+		
+		
+		/*** volet client ***/
 		verificationVolsDisponibles();		
+		System.out.println();
+		
 		String noReservation = reservationSiege("AC481", "A");
+		System.out.println();
+		
 		paiement(noReservation, new Client());
+		System.out.println();
+		
 		changement(noReservation, "AC481", "E"); // on modifie la section
-		annulation(noReservation);		
+		System.out.println();
+		
+		annulation(noReservation);
+		System.out.println();
 	}
 
 	private static void gererAeroports() {
@@ -122,7 +139,7 @@ public class Program {
 		Aeroport origine = (Aeroport) systemeReservation.getAdminVols().getArret("YUL");
 		Aeroport destination = (Aeroport) systemeReservation.getAdminVols().getArret("ABC");
 		SimpleDateFormat sdf = new SimpleDateFormat("dd-M-yyyy hh:mm:ss");
-		String strDepart = "15-04-2018 10:20:00";
+		String strDepart = "15-04-2017 00:00:00";
 		Date depart = null;
 		try {
 			depart = sdf.parse(strDepart);

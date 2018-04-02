@@ -9,6 +9,7 @@ import java.util.List;
 import repository.Model;
 import transport.Arret;
 import transport.BaseSection;
+import transport.CieTransport;
 import transport.Place;
 import transport.arret.Aeroport;
 import transport.arret.AeroportFactory;
@@ -57,6 +58,11 @@ public class AvionModel extends Model {
 		}
 		
 		Avion avion = new Avion("MODEL_AVION", sections);
+		
+		for (CieTransport c: compagnies) {
+			c.moyensTransport.add(avion);
+		}
+			
 		
 		List<Arret> aeroports = new ArrayList<Arret>();
 		aeroports.add(arrets.get(0));    
