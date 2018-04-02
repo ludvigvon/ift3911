@@ -49,16 +49,21 @@ public class OperationsAdmin implements Observer {
 			return null;
 	}
 	
+	@SuppressWarnings("unchecked")
 	public CieTransport createCie(String id, String name) {
-		return model.createCie(id, name);
+		cmd = new CreateCieCommand(model, id, name);
+		cmd.execute();
+		return ((ModelCommandWithResult<CieTransport>) cmd).getResult();
 	}
 
 	public void modifyCie(String id, String name) {
-		model.modifyCie(id, name);
+		cmd = new ModifyCieCommand(model, id, name);
+		cmd.execute();
 	}
 
 	public void deleteCie(String id) {
-		model.deleteCie(id);
+		cmd = new DeleteCieCommand(model, id);
+		cmd.execute();
 	}
 
 	public CieTransport getCie(String id) {
@@ -74,18 +79,23 @@ public class OperationsAdmin implements Observer {
 		return model.getMoyenTransport(cie, modele);
 	}
 	
+	@SuppressWarnings("unchecked")
 	public Itineraire createItineraire(String id, List<Arret> arrets, MoyenTransport transport, CieTransport cie, Date depart,
 			Date arrivee) {
-		return model.createItineraire(id, arrets, transport, cie, depart, arrivee);
+		cmd = new CreateItineraireCommand(model, id, arrets, transport, cie, depart, arrivee);
+		cmd.execute();
+		return ((ModelCommandWithResult<Itineraire>) cmd).getResult();
 	}
 
 	public void modifyItineraire(String id, List<Arret> arrets, MoyenTransport transport, CieTransport cie, Date depart,
 			Date arrivee) {
-		model.modifyItineraire(id, arrets, transport, cie, depart, arrivee);
+		cmd = new ModifyItineraireCommand(model, id, arrets, transport, cie, depart, arrivee);
+		cmd.execute();
 	}
 
 	public void deleteItineraire(String id) {
-		model.deleteItineraire(id);
+		cmd = new DeleteCieCommand(model, id);
+		cmd.execute();
 	}
 
 	public void consulterItineraires(String cieName) {
